@@ -7,9 +7,9 @@ interface NoteRepository {
 
     fun getAllNotes(): Flow<List<Note>>
 
-    suspend fun getSingleNote(noteId: Long): Note?
+    fun getSingleNote(noteId: Long): Flow<Note?>
 
-    suspend fun addOrUpdateNote(note: Note)
+    suspend fun addOrUpdateNote(note: Note): Long
 
-    suspend fun deleteNote(noteId: Long)
+    suspend fun deleteNote(noteId: Long): Int
 }

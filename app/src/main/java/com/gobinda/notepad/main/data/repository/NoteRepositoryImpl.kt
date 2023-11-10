@@ -13,15 +13,15 @@ class NoteRepositoryImpl(
         return noteDao.getAllNotes()
     }
 
-    override suspend fun getSingleNote(noteId: Long): Note? {
+    override fun getSingleNote(noteId: Long): Flow<Note?> {
         return noteDao.getSingleNote(noteId)
     }
 
-    override suspend fun addOrUpdateNote(note: Note) {
+    override suspend fun addOrUpdateNote(note: Note): Long {
         return noteDao.addOrUpdateNote(note)
     }
 
-    override suspend fun deleteNote(noteId: Long) {
+    override suspend fun deleteNote(noteId: Long): Int {
         return noteDao.deleteNote(noteId)
     }
 }
