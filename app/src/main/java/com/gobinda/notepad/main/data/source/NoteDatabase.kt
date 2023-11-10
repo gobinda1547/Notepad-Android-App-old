@@ -11,4 +11,8 @@ import com.gobinda.notepad.main.domain.model.Note
 )
 abstract class NoteDatabase: RoomDatabase() {
     abstract fun noteDao(): NoteDao
+
+    companion object {
+        const val DB_NAME = "note_db"
+    }
 }
