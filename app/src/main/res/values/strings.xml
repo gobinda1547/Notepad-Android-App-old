@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Notepad</string>
+    <string name="text_enter_title">Enter title</string>
+    <string name="text_enter_content">Enter content</string>
+    <string name="text_save">Save</string>
+    <string name="text_empty_title">Empty title</string>
+    <string name="text_empty_content">Empty content</string>
+    <string name="text_unknown_exception">Unknown exception</string>
+    <string name="text_saved_successfully">Saved successfully</string>
+    <string name="text_updated_successfully">Updated successfully</string>
 </resources>
