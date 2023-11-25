@@ -17,5 +17,5 @@ data class NoteModel(
 
     @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0
+    val id: Long = 0
 )

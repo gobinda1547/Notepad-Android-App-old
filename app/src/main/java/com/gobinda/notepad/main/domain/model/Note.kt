@@ -4,5 +4,5 @@ data class Note(
     val title: String,
     val content: String,
     val lastEditTime: Long,
-    val id: Int = 0
+    val id: Long = 0
 )

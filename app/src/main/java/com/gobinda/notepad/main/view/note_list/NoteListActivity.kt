@@ -10,8 +10,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.gobinda.notepad.R
 import com.gobinda.notepad.databinding.ActivityNoteListBinding
+import com.gobinda.notepad.main.common.PK_NOTE_ID
 import com.gobinda.notepad.main.domain.model.NoteAsListItem
 import com.gobinda.notepad.main.view.add_note.AddNoteActivity
+import com.gobinda.notepad.main.view.show_note.ShowNoteActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
@@ -65,6 +67,8 @@ class NoteListActivity : AppCompatActivity() {
     }
 
     private fun handleAdapterCallback(note: NoteAsListItem) {
-        println("handleAdapterCallback: [${note.id}][${note.title}]")
+        startActivity(Intent(this, ShowNoteActivity::class.java).apply {
+            putExtra(PK_NOTE_ID, note.id)
+        })
     }
 }
