@@ -2,10 +2,10 @@ package com.gobinda.notepad.main.data.source
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.gobinda.notepad.main.domain.model.Note
+import com.gobinda.notepad.main.data.model.NoteModel
 
 @Database(
-    entities = [Note::class],
+    entities = [NoteModel::class],
     version = 1,
     exportSchema = false
 )

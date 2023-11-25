@@ -1,8 +1,7 @@
 package com.gobinda.notepad.main.domain.model
 
-data class Note(
+data class NoteAsListItem(
     val title: String,
     val content: String,
-    val lastEditTime: Long,
     val id: Int = 0
 )

@@ -1,6 +1,7 @@
 package com.gobinda.notepad.main.domain.use_case
 
-import com.gobinda.notepad.main.domain.model.Note
+import com.gobinda.notepad.main.common.toNoteAsListItem
+import com.gobinda.notepad.main.domain.model.NoteAsListItem
 import com.gobinda.notepad.main.domain.repository.NoteRepository
 import com.gobinda.notepad.main.domain.util.NoteSortingOrder
 import kotlinx.coroutines.flow.Flow
@@ -19,7 +20,7 @@ class GetNoteList(private val repository: NoteRepository) {
      */
     operator fun invoke(
         sortingOrder: NoteSortingOrder = NoteSortingOrder.Ascending
-    ): Flow<List<Note>> {
+    ): Flow<List<NoteAsListItem>> {
         return repository.getAllNotes().map { notes ->
             when (sortingOrder) {
                 NoteSortingOrder.Ascending -> {
@@ -30,6 +31,6 @@ class GetNoteList(private val repository: NoteRepository) {
                     notes.sortedByDescending { it.lastEditTime }
                 }
             }
-        }
+        }.map { noteModelList -> noteModelList.map { it.toNoteAsListItem() } }
     }
 }

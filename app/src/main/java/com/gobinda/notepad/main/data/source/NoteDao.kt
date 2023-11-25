@@ -4,20 +4,20 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.gobinda.notepad.main.domain.model.Note
+import com.gobinda.notepad.main.data.model.NoteModel
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface NoteDao {
 
     @Query("SELECT * from note_table")
-    fun getAllNotes(): Flow<List<Note>>
+    fun getAllNotes(): Flow<List<NoteModel>>
 
     @Query("SELECT * from note_table WHERE id = :noteId")
-    fun getSingleNote(noteId: Long): Flow<Note?>
+    fun getSingleNote(noteId: Long): Flow<NoteModel?>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addOrUpdateNote(note: Note): Long
+    suspend fun addOrUpdateNote(note: NoteModel): Long
 
     @Query("DELETE from note_table WHERE id = :noteId")
     suspend fun deleteNote(noteId: Long): Int

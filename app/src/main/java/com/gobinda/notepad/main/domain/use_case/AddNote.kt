@@ -1,6 +1,7 @@
 package com.gobinda.notepad.main.domain.use_case
 
 import com.gobinda.notepad.R
+import com.gobinda.notepad.main.common.toNoteModel
 import com.gobinda.notepad.main.domain.model.Note
 import com.gobinda.notepad.main.domain.repository.NoteRepository
 
@@ -14,7 +15,7 @@ class AddNote(private val repository: NoteRepository) {
         if (note.content.trim().isEmpty()) {
             throw AddNoteException(R.string.text_empty_content)
         }
-        if (repository.addOrUpdateNote(note) <= 0) {
+        if (repository.addOrUpdateNote(note.toNoteModel()) <= 0) {
             throw AddNoteException(R.string.text_unknown_exception)
         }
     }
