@@ -3,9 +3,14 @@
     <string name="text_enter_title">Enter title</string>
     <string name="text_enter_content">Enter content</string>
     <string name="text_save">Save</string>
+    <string name="text_edit">Edit</string>
     <string name="text_empty_title">Empty title</string>
     <string name="text_empty_content">Empty content</string>
     <string name="text_unknown_exception">Unknown exception</string>
     <string name="text_saved_successfully">Saved successfully</string>
     <string name="text_updated_successfully">Updated successfully</string>
+
+    <string name="text_minimum_length_is">Minimum length is 3</string>
+    <string name="text_maximum_length_is">Maximum length is 10</string>
+    <string name="text_should_not_be_empty">Should not be empty</string>
 </resources>
