@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Notepad"
         tools:targetApi="31">
         <activity
-            android:name=".main.view.note_list.NoteListActivity"
+            android:name=".view.note_list.NoteListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,13 +23,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".main.view.show_note.ShowNoteActivity"
+            android:name=".view.show_note.ShowNoteActivity"
             android:exported="false" />
         <activity
-            android:name=".main.view.edit_note.EditNoteActivity"
+            android:name=".view.edit_note.EditNoteActivity"
             android:exported="false" />
         <activity
-            android:name=".main.view.add_note.AddNoteActivity"
+            android:name=".view.add_note.AddNoteActivity"
             android:exported="false" />
     </application>
 

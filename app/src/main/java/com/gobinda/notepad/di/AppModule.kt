@@ -2,14 +2,14 @@ package com.gobinda.notepad.di
 
 import android.content.Context
 import androidx.room.Room
-import com.gobinda.notepad.main.data.repository.NoteRepositoryImpl
-import com.gobinda.notepad.main.data.source.NoteDao
-import com.gobinda.notepad.main.data.source.NoteDatabase
-import com.gobinda.notepad.main.domain.repository.NoteRepository
-import com.gobinda.notepad.main.domain.use_case.AddNote
-import com.gobinda.notepad.main.domain.use_case.DeleteNote
-import com.gobinda.notepad.main.domain.use_case.GetNoteList
-import com.gobinda.notepad.main.domain.use_case.GetSingleNote
+import com.gobinda.notepad.common.NoteRepository
+import com.gobinda.notepad.data.repository.NoteRepositoryImpl
+import com.gobinda.notepad.data.source.NoteDao
+import com.gobinda.notepad.data.source.NoteDatabase
+import com.gobinda.notepad.domain.use_case.AddNote
+import com.gobinda.notepad.domain.use_case.DeleteNote
+import com.gobinda.notepad.domain.use_case.GetNoteList
+import com.gobinda.notepad.domain.use_case.GetSingleNote
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
