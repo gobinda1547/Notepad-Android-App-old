@@ -25,6 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/text_enter_title"
+                app:counterEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -35,8 +36,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
-                    android:inputType="textMultiLine"
+                    android:maxLines="1"
                     android:onTextChanged="@{viewModel.titleChangeListener}"
+                    android:singleLine="true"
                     android:text="@{viewModel.noteTitle}" />
 
             </com.google.android.material.textfield.TextInputLayout>

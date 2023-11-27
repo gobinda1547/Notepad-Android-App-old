@@ -31,6 +31,8 @@ class AddNoteActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
 
         setContentView(binding.root)
+        setTitle(R.string.text_add_new_note)
+
         addHandlersAndObservers()
     }
 

@@ -29,16 +29,14 @@ class ShowNoteActivity : AppCompatActivity() {
         binding = ActivityShowNoteBinding.inflate(layoutInflater)
         binding.lifecycleOwner = this
 
-        title = "Single note"
         setContentView(binding.root)
-
         addHandlersAndListeners()
     }
 
     private fun addHandlersAndListeners() {
         lifecycleScope.launchWhenStarted {
             viewModel.singleNote.collectLatest {
-                binding.titleTextView.text = it?.title
+                supportActionBar?.title = it?.title
                 binding.contentTextView.text = it?.content
             }
         }

@@ -43,6 +43,8 @@ class NoteListActivity : AppCompatActivity() {
     }
 
     private fun initializeUiComponents() {
+        setTitle(R.string.text_note_list)
+
         noteListAdapter = NoteListAdapter { note -> handleAdapterCallback(note) }
         binding.noteListRecyclerView.adapter = noteListAdapter
         val decoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
