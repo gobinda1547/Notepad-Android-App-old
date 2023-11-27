@@ -3,6 +3,7 @@ package com.gobinda.notepad.view.note_list
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -11,8 +12,13 @@ import com.gobinda.notepad.R
 import com.gobinda.notepad.domain.model.NoteAsListItem
 
 class NoteListAdapter(
-    private val onClick: (NoteAsListItem) -> Unit
+    private val callback: Callback?
 ) : ListAdapter<NoteAsListItem, NoteListAdapter.NoteViewHolder>(DiffUtilCallback) {
+
+    interface Callback {
+        fun onItemClick(noteItem: NoteAsListItem)
+        fun onDeleteClick(noteItem: NoteAsListItem)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -32,7 +38,10 @@ class NoteListAdapter(
 
         init {
             itemView.setOnClickListener {
-                currentNote?.let { onClick(it) }
+                currentNote?.let { callback?.onItemClick(it) }
+            }
+            itemView.findViewById<ImageView>(R.id.delete_button).setOnClickListener {
+                currentNote?.let { callback?.onDeleteClick(it) }
             }
         }
 

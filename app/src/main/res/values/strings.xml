@@ -11,8 +11,13 @@
     <string name="text_updated_successfully">Updated successfully</string>
     <string name="text_add_new_note">Add new note</string>
     <string name="text_note_list">Note list</string>
+    <string name="text_OK">OK</string>
+    <string name="text_cancel">Cancel</string>
 
     <string name="text_minimum_length_is">Minimum length is 3</string>
     <string name="text_maximum_length_is">Maximum length is 16</string>
     <string name="text_should_not_be_empty">Should not be empty</string>
+
+    <string name="delete_dialog_title">Delete note?</string>
+    <string name="delete_dialog_content">Delete note?</string>
 </resources>

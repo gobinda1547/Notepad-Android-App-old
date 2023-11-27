@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.gobinda.notepad.R
@@ -23,6 +24,16 @@ class NoteListActivity : AppCompatActivity() {
     private lateinit var noteListAdapter: NoteListAdapter
 
     private val viewModel: NoteListViewModel by viewModels()
+
+    private val adapterCallback = object : NoteListAdapter.Callback {
+        override fun onItemClick(noteItem: NoteAsListItem) {
+            handleOnListItemClick(noteItem)
+        }
+
+        override fun onDeleteClick(noteItem: NoteAsListItem) {
+            handleOnListItemDeleteClick(noteItem)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +56,7 @@ class NoteListActivity : AppCompatActivity() {
     private fun initializeUiComponents() {
         setTitle(R.string.text_note_list)
 
-        noteListAdapter = NoteListAdapter { note -> handleAdapterCallback(note) }
+        noteListAdapter = NoteListAdapter(adapterCallback)
         binding.noteListRecyclerView.adapter = noteListAdapter
         val decoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         binding.noteListRecyclerView.addItemDecoration(decoration)
@@ -67,9 +78,23 @@ class NoteListActivity : AppCompatActivity() {
         }
     }
 
-    private fun handleAdapterCallback(note: NoteAsListItem) {
+    private fun handleOnListItemClick(note: NoteAsListItem) {
         startActivity(Intent(this, ShowNoteActivity::class.java).apply {
             putExtra(com.gobinda.notepad.common.PK_NOTE_ID, note.id)
         })
+    }
+
+    private fun handleOnListItemDeleteClick(note: NoteAsListItem) {
+        AlertDialog.Builder(this).apply {
+            setTitle(getString(R.string.delete_dialog_title))
+            setMessage(getString(R.string.delete_dialog_content))
+            setPositiveButton(getString(R.string.text_OK)) { dialog, _ ->
+                viewModel.deleteNoteFromList(note.id)
+                dialog.dismiss()
+            }
+            setNegativeButton(getString(R.string.text_cancel)) { dialog, _ ->
+                dialog.dismiss()
+            }
+        }.create().show()
     }
 }
