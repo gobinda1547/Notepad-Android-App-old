@@ -8,5 +8,5 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NoteListViewModel @Inject constructor(getNoteList: GetNoteList) : ViewModel() {
-    val noteList = getNoteList(sortingOrder = NoteSortingOrder.Ascending)
+    val noteList = getNoteList(sortingOrder = NoteSortingOrder.Descending)
 }

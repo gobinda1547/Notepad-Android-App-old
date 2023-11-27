@@ -9,7 +9,7 @@ import dagger.assisted.AssistedInject
 
 class ShowNoteViewModel @AssistedInject constructor(
     getSingleNote: GetSingleNote,
-    @Assisted private val noteId: Long
+    @Assisted val noteId: Long
 ) : ViewModel() {
 
     val singleNote = getSingleNote(noteId = noteId)
