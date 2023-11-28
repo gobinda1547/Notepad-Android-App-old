@@ -26,10 +26,7 @@
             android:name=".view.show_note.ShowNoteActivity"
             android:exported="false" />
         <activity
-            android:name=".view.edit_note.EditNoteActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.add_note.AddNoteActivity"
+            android:name=".view.add_edit_note.AddEditNoteActivity"
             android:exported="false" />
     </application>
 

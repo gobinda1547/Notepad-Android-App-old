@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.gobinda.notepad.view.edit_note.EditNoteViewModel" />
+            type="com.gobinda.notepad.view.add_edit_note.AddEditNoteViewModel" />
     </data>
 
     <ScrollView

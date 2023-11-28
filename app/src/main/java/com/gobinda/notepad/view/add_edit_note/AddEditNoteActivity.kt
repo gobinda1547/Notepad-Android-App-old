@@ -1,4 +1,4 @@
-package com.gobinda.notepad.view.edit_note
+package com.gobinda.notepad.view.add_edit_note
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,33 +10,37 @@ import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.gobinda.notepad.R
 import com.gobinda.notepad.common.PK_NOTE_ID
-import com.gobinda.notepad.databinding.ActivityEditNoteBinding
+import com.gobinda.notepad.databinding.ActivityAddEditNoteBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class EditNoteActivity : AppCompatActivity() {
+class AddEditNoteActivity : AppCompatActivity() {
 
     companion object {
         private const val TAG = "MyTestApp"
     }
 
-    private lateinit var binding: ActivityEditNoteBinding
+    private lateinit var binding: ActivityAddEditNoteBinding
 
     @Inject
-    lateinit var editNoteViewModelFactory: EditNoteViewModel.Factory
-    private val viewModel: EditNoteViewModel by viewModels {
-        EditNoteViewModel.getFactory(
-            assistedFactory = editNoteViewModelFactory,
-            noteId = intent.getLongExtra(PK_NOTE_ID, 0L)
+    lateinit var viewModelFactory: AddEditNoteViewModel.Factory
+    private val viewModel: AddEditNoteViewModel by viewModels {
+        val isEdit = intent.hasExtra(PK_NOTE_ID)
+        AddEditNoteViewModel.getFactory(
+            assistedFactory = viewModelFactory,
+            noteId = when (isEdit) {
+                true -> intent.getLongExtra(PK_NOTE_ID, 0L)
+                else -> null
+            }
         )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityEditNoteBinding.inflate(layoutInflater)
+        binding = ActivityAddEditNoteBinding.inflate(layoutInflater)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
@@ -49,7 +53,7 @@ class EditNoteActivity : AppCompatActivity() {
     private fun addHandlersAndObservers() {
         lifecycleScope.launchWhenStarted {
             viewModel.toastMessage.collectLatest {
-                val context = this@EditNoteActivity
+                val context = this@AddEditNoteActivity
                 Toast.makeText(context, getString(it), Toast.LENGTH_SHORT).show()
             }
         }

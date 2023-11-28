@@ -10,7 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import com.gobinda.notepad.R
 import com.gobinda.notepad.common.PK_NOTE_ID
 import com.gobinda.notepad.databinding.ActivityShowNoteBinding
-import com.gobinda.notepad.view.edit_note.EditNoteActivity
+import com.gobinda.notepad.view.add_edit_note.AddEditNoteActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import javax.inject.Inject
@@ -57,7 +57,7 @@ class ShowNoteActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.action_edit -> {
                 startActivity(
-                    Intent(this, EditNoteActivity::class.java).apply {
+                    Intent(this, AddEditNoteActivity::class.java).apply {
                         putExtra(PK_NOTE_ID, viewModel.noteId)
                     }
                 )

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import com.gobinda.notepad.R
 import com.gobinda.notepad.databinding.ActivityNoteListBinding
 import com.gobinda.notepad.domain.model.NoteAsListItem
-import com.gobinda.notepad.view.add_note.AddNoteActivity
+import com.gobinda.notepad.view.add_edit_note.AddEditNoteActivity
 import com.gobinda.notepad.view.show_note.ShowNoteActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -70,7 +70,7 @@ class NoteListActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_add -> {
-                startActivity(Intent(this, AddNoteActivity::class.java))
+                startActivity(Intent(this, AddEditNoteActivity::class.java))
                 true
             }
 
